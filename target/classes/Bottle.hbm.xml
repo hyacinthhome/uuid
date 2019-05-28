@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.Bottle" table="t_bottle" >
+        <id name="bottle_id" column="bottle_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="uuid"></generator>
+        </id>
+
+        <property name="bottle_value" column="bottle_value" type="text" length="20000"></property>
+        <property name="bottle_year" column="bottle_year"></property>
+        <property name="bottle_month" column="bottle_month"></property>
+        <property name="bottle_day" column="bottle_day"></property>
+        <property name="bottle_hour" column="bottle_hour"></property>
+        <property name="bottle_min" column="bottle_min"></property>
+        <property name="bottle_sec" column="bottle_sec"></property>
+        <property name="bottle_usedtime" column="bottle_usedtime"></property>
+
+        <many-to-one name="bottle_user" column="ubid" class="cn.itcast.entity.User" lazy="false"></many-to-one>
+    </class>
+
+</hibernate-mapping>

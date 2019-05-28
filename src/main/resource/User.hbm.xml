@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping  >
+
+    <!-- 属性table 表示在数据库中的表名  -->
+    <class name="cn.itcast.entity.User" table="t_user" >
+        <id name="user_id" column="user_id">
+            <!-- 值native表示会根据数据库来创建不同的主键生成策略 -->
+            <generator class="uuid"></generator>
+        </id>
+
+        <property name="user_username" column="user_username"></property>
+        <property name="user_password" column="user_password"></property>
+        <property name="user_email" column="user_email"></property>
+        <property name="user_gender" column="user_gender"></property>
+        <property name="user_academy" column="user_academy"></property>
+        <property name="user_phonenumber" column="user_phonenumber"></property>
+        <property name="user_school" column="user_school"></property>
+        <property name="user_stunum" column="user_stunum"></property>
+        <set name="user_bottles" cascade="save-update,delete">
+            <key column="ubid"></key>
+            <one-to-many class="cn.itcast.entity.Bottle"></one-to-many>
+        </set>
+    </class>
+
+</hibernate-mapping>
